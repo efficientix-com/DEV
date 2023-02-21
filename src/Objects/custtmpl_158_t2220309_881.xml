@@ -1,0 +1,9 @@
+<advancedpdftemplate scriptid="custtmpl_158_t2220309_881" standard="STDTMPLCUSTCRED">
+  <description></description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>F</preferred>
+  <printtype>TRANSACTION</printtype>
+  <title>EFX FE - Credit Memo Template_AA</title>
+  <trantype>CUSTCRED</trantype>
+</advancedpdftemplate>

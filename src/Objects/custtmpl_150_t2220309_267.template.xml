@@ -629,15 +629,15 @@
                 </thead>
 
                 <tr>
-                    <#assign cantidad = dataXML.Conceptos.atributos.Cantidad>
+                    <#assign cantidad = dataXML.Conceptos.Concepto.atributos.Cantidad>
                     <td align="center" colspan="2" line-height="150%">${cantidad?number?string[",##0"]}</td>
                     <td colspan="10">
                         <span class="itemname">Código: ${item.item}</span><br/>
                         UPC: ${item.custcol_efx_fe_upc_code}<br/>
-                        Descripción: ${dataXML.Conceptos.atributos.Descripcion}<br/>
+                        Descripción: ${dataXML.Conceptos.Concepto.atributos.Descripcion}<br/>
                         Serie/Lote: ${item.custcol_efx_fe_serie_lote}
                     </td>
-                    <td colspan="4" align="left">Clave: ${dataXML.Conceptos.atributos.ClaveProdServ}<br/>Unidad: ${dataXML.Conceptos.atributos.ClaveUnidad}</td>
+                    <td colspan="4" align="left">Clave: ${dataXML.Conceptos.Concepto.atributos.ClaveProdServ}<br/>Unidad: ${dataXML.Conceptos.Concepto.atributos.ClaveUnidad}</td>
 
                     <#if desglose_body?has_content>
                         <#list desglose_body.rates_iva as key, value>
@@ -651,40 +651,40 @@
 
                     <td align="right" colspan="3">${item.tax1amt?string[",##0.00"]}</td>
                     <td align="right" colspan="3">
-                        <#if dataXML.Conceptos.Impuestos.Traslados?has_content>
-                            <#assign percent = dataXML.Conceptos.Impuestos.Traslados.Traslado.atributos.TasaOCuota>
+                        <#if dataXML.Conceptos.Concepto.Impuestos.Traslados?has_content>
+                            <#assign percent = dataXML.Conceptos.Concepto.Impuestos.Traslados.Traslado.atributos.TasaOCuota>
                             <#assign number = percent?number!0.0>
                             <#assign floatNumber = number*100>
-                            $${dataXML.Conceptos.Impuestos.Traslados.Traslado.atributos.Importe} <br />Tasa: ${floatNumber?string[",##0"]}%
+                            $${dataXML.Conceptos.Concepto.Impuestos.Traslados.Traslado.atributos.Importe} <br />Tasa: ${floatNumber?string[",##0"]}%
                         </#if>
                     </td>
 
                     <td align="right" colspan="3">
-                        <#if dataXML.Conceptos.Impuestos.Retenciones?has_content>
-                            <#assign percent = dataXML.Conceptos.Impuestos.Retenciones.Retencion.atributos.TasaOCuota>
+                        <#if dataXML.Conceptos.Concepto.Impuestos.Retenciones?has_content>
+                            <#assign percent = dataXML.Conceptos.Concepto.Impuestos.Retenciones.Retencion.atributos.TasaOCuota>
                             <#assign number = percent?number!0.0>
                             <#assign floatNumber = number*100>
-                            $${dataXML.Conceptos.Impuestos.Retenciones.Retencion.atributos.Importe} <br />Tasa: ${floatNumber?string[",##0.00"]}%
+                            $${dataXML.Conceptos.Concepto.Impuestos.Retenciones.Retencion.atributos.Importe} <br />Tasa: ${floatNumber?string[",##0.00"]}%
                         <#else>
 
                         </#if>
                     </td>
-                    <td align="right" colspan="3">$${dataXML.Conceptos.atributos.ValorUnitario?number?string[",##0.00"]}</td>
-                    <td align="right" colspan="3">$${dataXML.Conceptos.atributos.Importe?number?string[",##0.00"]}</td>
+                    <td align="right" colspan="3">$${dataXML.Conceptos.Concepto.atributos.ValorUnitario?number?string[",##0.00"]}</td>
+                    <td align="right" colspan="3">$${dataXML.Conceptos.Concepto.atributos.Importe?number?string[",##0.00"]}</td>
                 </tr>
-                <#if record.entity.custentity_mx_sat_industry_type?has_content && dataXML.Conceptos.Concepto.atributos.ObjetoImp?has_content>
-                    <#if dataXML.Conceptos.Concepto.atributos.ObjetoImp?number == 1>
+                <#if record.entity.custentity_mx_sat_industry_type?has_content && dataXML.Conceptos.Concepto.Concepto.atributos.ObjetoImp?has_content>
+                    <#if dataXML.Conceptos.Concepto.Concepto.atributos.ObjetoImp?number == 1>
                         <#assign objImpDesc = "NO OBJETO DE IMPUESTO.">
-                    <#elseif dataXML.Conceptos.Concepto.atributos.ObjetoImp?number == 2>
+                    <#elseif dataXML.Conceptos.Concepto.Concepto.atributos.ObjetoImp?number == 2>
                         <#assign objImpDesc = "SÍ OBJETO DE IMPUESTO.">
-                    <#elseif dataXML.Conceptos.Concepto.atributos.ObjetoImp?number == 3>
+                    <#elseif dataXML.Conceptos.Concepto.Concepto.atributos.ObjetoImp?number == 3>
                         <#assign objImpDesc = "SÍ OBJETO DE IMPUESTO Y NO OBLIGATORIO AL DESGLOSE.">
                     </#if>
                     <tr style="padding:0px 0px;">
                         <td colspan="6"
                             style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;"><b>Objeto de impuesto</b>
                         </td>
-                        <td colspan="13" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${dataXML.Conceptos.Concepto.atributos.ObjetoImp} - ${objImpDesc}</td>
+                        <td colspan="13" style="font-size: 4pt; padding-top: 1px;  padding-bottom: 1px;">${dataXML.Conceptos.Concepto.Concepto.atributos.ObjetoImp} - ${objImpDesc}</td>
                     </tr>
                 </#if>
             </#if>
